@@ -17,7 +17,9 @@ def test_host_pip_repairs_a_pip_free_environment_and_quotes_paths(tmp_path):
     with patch.object(start, "works", return_value=False), patch.object(start, "checked", side_effect=lambda cmd, log: commands.append(cmd)):
         start.ensure_pip(tmp_path / "Matias Jaque/.venv/Scripts/python.exe", tmp_path / "log", host="C:/Python314/python.exe")
     assert commands[0][:4] == ["C:/Python314/python.exe", "-m", "pip", "--python"]
-    assert commands[0][4].endswith("Matias Jaque/.venv/Scripts/python.exe")
+    assert commands[0][4].replace("\\", "/").endswith(
+        "Matias Jaque/.venv/Scripts/python.exe"
+    )
     assert all("ensurepip" not in part for part in commands[0])
 
 

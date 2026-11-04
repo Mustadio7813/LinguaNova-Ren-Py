@@ -11,7 +11,7 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 APP_BINARY="$SCRIPT_DIR/LinguaNova"
-RUN_PY="$SCRIPT_DIR/run.py"
+RUN_PY="$SCRIPT_DIR/LinguaNova_Traductor_RenPy.py"
 VENV_DIR="$SCRIPT_DIR/venv"
 REQ_FILE="$SCRIPT_DIR/requirements.txt"
 

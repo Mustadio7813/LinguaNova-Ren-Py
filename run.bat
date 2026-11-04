@@ -4,12 +4,12 @@ cd /d "%~dp0"
 title LinguaNova
 py -3 -c "import sys; raise SystemExit(0 if sys.version_info >= (3,10) else 1)" >nul 2>nul
 if not errorlevel 1 (
-    py -3 "%~dp0start.py" %*
+    py -3 "%~dp0LinguaNova_Traductor_RenPy.py" %*
     goto result
 )
 python -c "import sys; raise SystemExit(0 if sys.version_info >= (3,10) else 1)" >nul 2>nul
 if not errorlevel 1 (
-    python "%~dp0start.py" %*
+    python "%~dp0LinguaNova_Traductor_RenPy.py" %*
     goto result
 )
 echo No se encontro Python. Para ejecutar las fuentes se necesita Python 3.10 o superior.

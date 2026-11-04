@@ -1,5 +1,5 @@
-LINGUANOVA V2.2 - CORRECCIÓN MULTIDIOMA
-Versión interna del programa: 1.1.2. Base recibida: Traductor LinguaNova V2.2.rar.
+LINGUANOVA 1.5.5 - FUNCIONES MULTIDIOMA
+La versión actual incluye los idiomas y controles descritos en esta guía.
 
 GESTIÓN AUTOMÁTICA DE FUENTES
 El traductor genera e instala por sí mismo game/zzz_linguanova_ocultar_fuentes.rpy.

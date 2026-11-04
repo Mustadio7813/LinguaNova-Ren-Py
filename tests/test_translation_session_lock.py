@@ -24,3 +24,8 @@ def test_stop_button_remains_available_during_run():
     block = qml[pos:pos + 12000]
     assert "appBackend.stopTranslation()" in block
     assert "ln_stop_translation" in block
+
+
+def test_translation_page_remains_available_during_run():
+    qml = Path("src/gui/qml/Main.qml").read_text(encoding="utf-8")
+    assert "enabled: !isTranslating || pageIndex === 0 || pageIndex === 6" in qml

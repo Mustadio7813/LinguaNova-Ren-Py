@@ -23,6 +23,7 @@ __pycache__/
 venv/
 env/
 .venv/
+.venv_prueba_155/
 
 # ── Build & Distribution ──────────────────────────────────────────────
 dist/
@@ -30,6 +31,7 @@ dist/
 # (macOS has no script: the spec's BUNDLE block makes the .app, see release.yml)
 build/bdist.*
 build/lib
+build/prueba_155/
 build_log.txt
 # Keep only the current release spec in Git; next-generation specs stay local.
 *.spec

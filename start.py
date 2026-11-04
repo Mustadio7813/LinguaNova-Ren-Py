@@ -81,8 +81,15 @@ def prepare(root, *, environment=None, requirements=None):
 def main(argv=None):
     root = Path(__file__).resolve().parent
     python = prepare(root)
-    print('Abriendo LinguaNova: texto e imágenes en la misma ventana…', flush=True)
-    return subprocess.run([str(python), str(root / 'run.py'), *(sys.argv[1:] if argv is None else argv)], cwd=root).returncode
+    print('Abriendo LinguaNova 1.5.5…', flush=True)
+    return subprocess.run(
+        [
+            str(python),
+            str(root / 'LinguaNova_Traductor_RenPy.py'),
+            *(sys.argv[1:] if argv is None else argv),
+        ],
+        cwd=root,
+    ).returncode
 
 
 def launch():

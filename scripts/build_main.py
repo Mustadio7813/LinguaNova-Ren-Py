@@ -1,4 +1,4 @@
-"""Build the single Windows application with its OCR runtime, Python 3.10+."""
+"""Build the Windows application from the standalone 1.5.5 source."""
 from pathlib import Path
 import os
 import struct
@@ -16,9 +16,8 @@ def main():
     python=prepare(ROOT)
     log=ROOT/'compilacion_error.log'
     checked([str(python),'-m','pip','install','PyInstaller>=6.12,<7'],log,cwd=ROOT)
-    checked([str(python),str(ROOT/'scripts/prepare_ocr_bundle.py')],log,cwd=ROOT)
     checked([str(python),'-m','PyInstaller','--noconfirm','--clean',str(ROOT/'LinguaNova.spec')],log,cwd=ROOT)
-    print('Distribuye TODA la carpeta dist/LinguaNova. El destinatario no necesita Python ni pip.')
+    print('Distribuye toda la carpeta dist/LinguaNova. El destinatario no necesita Python ni pip.')
     return 0
 
 

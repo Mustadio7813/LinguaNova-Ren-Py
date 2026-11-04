@@ -4,7 +4,18 @@
 render_with_liquid: false
 ---
 
-# RenLocalizer Changelog
+# LinguaNova Changelog
+
+#### [1.5.5] - 2026-10-26
+
+- Add a verified trial workflow with file-level recovery records, protected
+  user changes, and launch checks before opening the game.
+- Make cancellation responsive across translation and interface generation,
+  while preserving accepted work and safe file writes.
+- Keep DeepL key controls visible and separate compiled-user configuration
+  from source-run configuration.
+- Allow users to return to Translation from MOD while a translation is active.
+- Preserve the existing attribution and third-party license notices.
 
 #### [Five-language package V2.2] - 2026-10-20
 
@@ -23,6 +34,9 @@ render_with_liquid: false
 
 #### [Unreleased] - LinguaNova source fixes
 
+- Keep the Translation and MOD pages available while a job is running so the
+  user can return to progress and cancellation controls without interrupting
+  the queued work.
 - **Cache integrity:** empty results and results identical to the source are
   no longer stored or reused as successful cache hits; legacy matching entries
   are discarded on load and removed from the saved cache.

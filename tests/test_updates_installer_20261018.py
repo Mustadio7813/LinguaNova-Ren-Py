@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import hashlib
+import ast
 import json
 import re
 import threading
@@ -273,14 +274,23 @@ def test_utilities_page_has_update_and_language_cards():
 
 def test_windows_launcher_bootstraps_pip_without_failing_ensurepip_first():
     launcher = Path("run.bat").read_text(encoding="utf-8")
-    create_environment = launcher[
-        launcher.index('if not exist "%VENV_PY%" ('):
-        launcher.index(') else (\n    echo [1/4] Entorno virtual local encontrado.')
-    ]
-    assert "%PY_CMD% -m venv --without-pip \"%VENV_DIR%\"" in create_environment
-    assert "%PY_CMD% -m pip --python \"%VENV_PY%\" install --upgrade pip" in create_environment
-    assert "%PY_CMD% -m venv \"%VENV_DIR%\"" not in create_environment
-    assert "-m ensurepip" not in launcher
+    bootstrap = Path("LinguaNova_Traductor_RenPy.py").read_text(encoding="utf-8")
+    assert "LinguaNova_Traductor_RenPy.py" in launcher
+    assert "LN_start__venv.EnvBuilder(with_pip=False).create(environment)" in bootstrap
+    assert "host, '-m', 'pip', '--python', python" in bootstrap
+    assert "get-pip.py" in bootstrap
+    tree = ast.parse(bootstrap)
+    assert not any(
+        alias.name == "ensurepip" or alias.name.startswith("ensurepip.")
+        for node in ast.walk(tree)
+        if isinstance(node, ast.Import)
+        for alias in node.names
+    )
+    assert not any(
+        node.module == "ensurepip" or (node.module or "").startswith("ensurepip.")
+        for node in ast.walk(tree)
+        if isinstance(node, ast.ImportFrom)
+    )
 
 
 # ── user interface languages ──────────────────────────────────────────────

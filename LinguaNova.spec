@@ -69,38 +69,34 @@ win_exe_kwargs = (
     {"version": _version_info_path} if sys.platform == "win32" else {}
 )
 
-# Automatically collect all submodules from src package
-hidden_imports = collect_submodules('src')
-hidden_imports += collect_submodules('linguanova_next')
-for image_package in ('PIL', 'pillow_avif', 'resvg_py', 'defusedxml', 'numpy', 'cv2', 'rarfile'):
-    hidden_imports += collect_submodules(image_package)
-
-# Aggressively collect submodules for external libraries to prevent missing imports
-hidden_imports += collect_submodules('aiohttp')
-hidden_imports += collect_submodules('requests')
-hidden_imports += collect_submodules('packaging')
-hidden_imports += collect_submodules('charset_normalizer')
-hidden_imports += collect_submodules('unrpa')
-hidden_imports += collect_submodules('rpycdec')
-hidden_imports += ['decompiler']  # unrpyc -> decompiler package
-hidden_imports += collect_submodules('rich')
-hidden_imports += collect_submodules('yaml')
-hidden_imports += collect_submodules('certifi')
-hidden_imports += collect_submodules('openai')
-hidden_imports += collect_submodules('google.genai')
-hidden_imports += collect_submodules('fontTools')
-# Pandas submodules are too heavy (includes tests, matplotlib, etc). 
-# Basic pandas import is usually enough or handled by auto-analysis.
-# If needed, add only specific submodules manually.
+# The standalone 1.5.5 source does not import the retained modular or
+# experimental packages. Collect only its runtime dependencies.
+hidden_imports = [
+    'PyQt6.QtCore',
+    'PyQt6.QtGui',
+    'PyQt6.QtWidgets',
+    'venv',
+]
+for dependency in (
+    'aiohttp',
+    'requests',
+    'packaging',
+    'charset_normalizer',
+    'orjson',
+    'py3langid',
+    'unrpa',
+    'rich',
+    'yaml',
+    'certifi',
+    'openai',
+    'google.genai',
+    'fontTools',
+):
+    hidden_imports += collect_submodules(dependency)
 
 
 # Manual additions for specific edge cases
 hidden_imports.append('src.version')  # Ensure version module is bundled
-
-if sys.platform == 'win32':
-    hidden_imports.extend([
-        'win32timezone',
-    ])
 
 # Force include PyQt6 specific plugins and hidden imports for Linux
 if sys.platform != 'win32':
@@ -112,7 +108,6 @@ if sys.platform != 'win32':
 
 # Define datas with absolute paths to avoid not found errors
 datas_list = [
-    (os.path.join(project_dir, 'linguanova_next', 'data'), 'linguanova_next/data'),
     (os.path.join(project_dir, 'locales'), 'locales'),
     (os.path.join(project_dir, 'linguanova.ico'), '.'),
     (os.path.join(project_dir, 'linguanova_logo.png'), '.'),
@@ -121,14 +116,6 @@ datas_list = [
     # Add version.py for runtime reading
     (os.path.join(project_dir, 'src', 'version.py'), 'src'),
 ]
-
-# A compiled app carries the OCR executable, its DLLs and traineddata. No pip,
-# external Python or creator-side environment is used by the EXE.
-ocr_component = Path(project_dir) / 'components' / 'tesseract'
-if sys.platform == 'win32' and not (ocr_component / 'tesseract.exe').is_file():
-    raise RuntimeError('Prepare OCR before building: python scripts/prepare_ocr_bundle.py. The compiled app must include Tesseract.')
-if ocr_component.is_dir():
-    datas_list.append((str(ocr_component), 'components/tesseract'))
 
 # py3langid loads data/model.npz.xz at runtime and has no PyInstaller hook;
 # without it offline language detection silently never runs in the exe.
@@ -161,7 +148,7 @@ if sys.platform == 'win32':
 # GUI Application Analysis (LinguaNova)
 # =========================================================
 a = Analysis(
-    ['run.py'],
+    ['LinguaNova_Traductor_RenPy.py'],
     pathex=[project_dir],
     binaries=binaries_list,
     datas=datas_list,
@@ -202,7 +189,7 @@ exe = EXE(
 # CLI Application Analysis & Build (LinguaNovaCLI)
 # =========================================================
 a_cli = Analysis(
-    ['run_cli.py'],
+    ['run_cli_1_5_5.py'],
     pathex=[project_dir],
     binaries=binaries_list,
     datas=datas_list,
@@ -210,9 +197,7 @@ a_cli = Analysis(
     hookspath=[],
     hooksconfig={},
     runtime_hooks=[],
-    excludes=['PyQt5', 'tkinter', 'matplotlib', 'IPython', 'notebook', 'scipy.stats.tests',
-              'PyQt6.QtQuick', 'PyQt6.QtQml', 'PyQt6.QtOpenGL', 'PyQt6.QtNetwork', 'PyQt6.QtPrintSupport',
-              'PyQt6.QtSvg', 'PyQt6.QtSvgWidgets', 'PyQt6.QtMultimedia', 'PyQt6.QtBluetooth'],
+    excludes=['PyQt5', 'tkinter', 'matplotlib', 'IPython', 'notebook', 'scipy.stats.tests'],
     win_no_prefer_redirects=False,
     win_private_assemblies=False,
     cipher=block_cipher,
@@ -320,8 +305,3 @@ if os.path.isdir(_gui_dist) and os.path.isdir(_cli_dist):
                 print(f"[SPEC POST-BUILD] Merged {item} into dist/LinguaNova/")
             except Exception as e:
                 print(f"[SPEC POST-BUILD] Warning: Could not merge {item}: {e}")
-
-
-
-
-

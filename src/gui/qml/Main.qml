@@ -804,7 +804,7 @@ ApplicationWindow {
                         required property string navKey
                         // Freeze pages that could mutate the active translation. MOD is
                         // exempt because its requests are snapshot-based and join the FIFO queue.
-                        enabled: !isTranslating || pageIndex === 6
+                        enabled: !isTranslating || pageIndex === 0 || pageIndex === 6
                         required property string navFallback
                         required property string navGlyph
                         required property string navGlyphColor

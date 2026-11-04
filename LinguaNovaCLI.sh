@@ -7,7 +7,7 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 APP_BINARY="$SCRIPT_DIR/LinguaNovaCLI"
-RUN_PY="$SCRIPT_DIR/run_cli.py"
+RUN_PY="$SCRIPT_DIR/run_cli_1_5_5.py"
 VENV_DIR="$SCRIPT_DIR/venv"
 REQ_FILE="$SCRIPT_DIR/requirements.txt"
 
