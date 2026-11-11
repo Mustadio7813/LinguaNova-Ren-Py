@@ -1,0 +1,84 @@
+{
+  "revision": "2026-11-11_ALIGERAR_JUEGO",
+  "date": "2026-11-11",
+  "edition": "Desarrollador",
+  "archive": "LinguaNova_Traductor_RenPy_1.5.5_Desarrollador_OPTIMIZADOR.zip",
+  "window_title": "Traductor de Ren'Py",
+  "application_version": "1.5.5",
+  "hook_format": 5,
+  "source": "LinguaNova_Traductor_RenPy.py",
+  "source_sha256": "f22e843941f2b5a2de5aeeb3699e8bad7942030304d4818b2cd4d256514535a3",
+  "runtime_hook": "game/linguanova_mod_runtime_multilang.rpy",
+  "backups": ".linguanova_backups/mod_hooks/",
+  "technical_detection_text": "unchanged_pending_confirmation",
+  "partial_coverage_message": "translatable_and_exempt",
+  "tests": {
+    "offline_unittest_passed": 10,
+    "review_cooldown_seconds_simulated": 300,
+    "review_stop_and_save_seconds": 0.01,
+    "historical_cancellation_cases_passed": 11,
+    "historical_scripts_passed": [
+      "PAQUETE_COMPARTIR",
+      "PAQUETE_SDK",
+      "PAQUETES_SUMADOS",
+      "RUNTIME_MOD_V5"
+    ],
+    "qt_signal_environment": "test double",
+    "windows_native": "not_executed",
+    "qt_qml_runtime": "executed_linux_offscreen",
+    "renpy_sdk": "not_executed",
+    "live_provider_credentials": "not_executed",
+    "python_compile": "passed",
+    "variant_diff_check": "passed",
+    "aligerar_juego_qt_offscreen": "28/28 passed",
+    "ffmpeg_download_local_server": "passed",
+    "optional_dependencies_install": "passed",
+    "ffmpeg_download_gyan_dev": "not_executed"
+  },
+  "historical_tests": {
+    "renpy_7_4_4_linux": "executed",
+    "renpy_scale_62476_linux": "shared_runtime_executed",
+    "renpy_save_load_linux": "shared_runtime_executed_with_fixture_screenshot",
+    "python_runtime_and_publication": "executed",
+    "qt_linux": "executed",
+    "windows_native": "not_executed",
+    "original_game": "not_executed",
+    "live_provider_credentials": "not_executed"
+  },
+  "pending_report": "translation_pending.json",
+  "previous_revision": {
+    "revision": "2026-11-09_COBERTURA_REVISAR",
+    "date": "2026-11-09",
+    "archive": "LinguaNova_Traductor_RenPy_1.5.5_Desarrollador_CORREGIDO.zip",
+    "source_sha256": "c2e37cdec1ddf69764a55c9bf46032db84f2f045bff85274e8b4ebc339a8490f"
+  },
+  "aligerar_juego": {
+    "ui": "Utilidades > Aligerar el juego (OptimizeGameCard.qml, modo avanzado)",
+    "backend": "optimizerBackend (LN_src_backend_optimizer_backend__OptimizerBackend)",
+    "module": "LN_src_tools_game_optimizer__",
+    "levels": [
+      "segura",
+      "equilibrada",
+      "maxima"
+    ],
+    "ffmpeg_search": [
+      "<programa>/ffmpeg/ffmpeg.exe",
+      "<programa>/ffmpeg.exe",
+      "<programa>/bin/ffmpeg.exe",
+      "%LOCALAPPDATA%/LinguaNova/herramientas/ffmpeg/ffmpeg.exe",
+      "ruta_elegida.txt",
+      "PATH"
+    ],
+    "ffmpeg_portable": "download_on_first_use_or_choose",
+    "ffmpeg_folder_build": "bundled_by_COMPILAR.bat",
+    "ffmpeg_source": "https://www.gyan.dev/ffmpeg/builds/ffmpeg-release-essentials.zip (SHA-256 verificado)",
+    "optional_dependencies": [
+      "pillow>=10.0",
+      "pyoxipng>=9.0",
+      "imagequant>=1.1",
+      "mozjpeg-lossless-optimization>=1.1"
+    ],
+    "cli": "--descargar-ffmpeg [carpeta]",
+    "not_integrated": "Desempaquetar (.rpa/.rpyc): ya lo hace LinguaNova"
+  }
+}

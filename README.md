@@ -51,6 +51,8 @@ translation engines.
 - Analysis of supported `.rpy`, `.rpyc`, and packed game content.
 - Translation review and manual corrections.
 - Interface-language MOD tools and in-app corrections.
+- An advanced **Lighten the game** utility that creates a smaller copy without
+  writing to the original game.
 - A work queue, progress reporting, cancellation, and recovery of interrupted
   work.
 - DeepL API-key controls and translation engines provided by the application.
@@ -61,6 +63,20 @@ translation engines.
 The MOD workflow is separate from the main translation. A game is not
 guaranteed to launch correctly just because text preparation completed; the
 application reports pending text and verification warnings.
+
+## Optimize a game copy
+
+In **Utilities → Lighten the game** (advanced mode), estimate savings or
+create a separate optimized copy. Choose lossless, balanced, or maximum
+compression; options are available for older PCs, Windows-only copies, and
+low-memory systems. Test the copy before replacing or deleting any game files.
+
+Audio and video optimization requires FFmpeg, a separate program. The portable
+EXE can download it on first use; the folder build can include it. Without
+FFmpeg, audio and video are copied unchanged. Image libraries are optional, so
+some compression methods may be unavailable. See the
+[optimizer guide](docs/ALIGERAR_JUEGO.md) and
+[build instructions](docs/COMPILAR.md).
 
 ## Cancel and restore
 
@@ -95,13 +111,17 @@ GUI build target the 1.5.5 entry point.
 - Windows source launch: `run.bat`
 - Windows portable-folder build: `build_windows.bat`
 - Windows installer: `build_installer.bat` (requires Inno Setup 6.5+)
-- Direct Windows build of the standalone source: `COMPILAR_1_5_5.bat`
+- Direct Windows folder build: `COMPILAR.bat`
+- Direct Windows single-file portable build: `COMPILAR_PORTABLE.bat`
+- Legacy direct build entry point: `COMPILAR_1_5_5.bat`
 - CLI help: `python LinguaNova_Traductor_RenPy.py --cli --help`
 
-The ZIP contains historical test reports from a trial build; they are not a
-substitute for running this repository's tests against the exact source here.
-The Windows executable and a user's game must be tested on their intended
-systems. See the included [1.5.5 guide](docs/LEEME_1_5_5.md) for limitations.
+The dated delivery evidence is preserved under
+[`docs/archive/2026-11-11-zip/`](docs/archive/2026-11-11-zip/); its historical
+test reports are not a substitute for running this repository's tests against
+the exact source here. The Windows executable and a user's game must be tested
+on their intended systems. See the [1.5.5 guide](docs/LEEME_1_5_5.md) for
+limitations.
 
 ## Contributing and validation
 

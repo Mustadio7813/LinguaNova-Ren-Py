@@ -1,0 +1,83 @@
+REVISIÓN 2026-11-11_ALIGERAR_JUEGO — Desarrollador
+Prueba de interfaz: python docs/PRUEBA_ALIGERAR_JUEGO.py -> 28 comprobaciones, 0 fallidas (Qt offscreen, Linux).
+Pruebas sin red: python docs/PRUEBA_COBERTURA_RECUPERACION_REVISAR.py -> Ran 10 tests, OK.
+Scripts: PAQUETE_COMPARTIR, PAQUETE_SDK, PAQUETES_SUMADOS, RUNTIME_MOD_V5 -> salida 0.
+Descarga de ffmpeg (servidor local): instalada con huella correcta; rechazada con huella incorrecta.
+--descargar-ffmpeg en Linux: aviso y salida 1 (la descarga automática es para Windows).
+Validación: python docs/VALIDAR_DOCUMENTACION.py -> correcta.
+
+---
+
+2026-11-09_COBERTURA_REVISAR
+Edición Desarrollador
+Simulación de motores y señales de Qt, Python 3.12.
+
+test_game_route_recovers_and_keeps_original_script (__main__.Tests.test_game_route_recovers_and_keeps_original_script) ... ok
+test_no_recovery_requests_when_retries_disabled (__main__.Tests.test_no_recovery_requests_when_retries_disabled) ... ok
+test_parser_and_pending_json (__main__.Tests.test_parser_and_pending_json) ... ok
+test_recovery_quota_stops_dispatch (__main__.Tests.test_recovery_quota_stops_dispatch) ... ok
+test_recovery_retry_segments_and_unchanged (__main__.Tests.test_recovery_retry_segments_and_unchanged) ... ok
+test_recovery_stop_and_cooldown (__main__.Tests.test_recovery_stop_and_cooldown) ... ok
+test_review_preserves_conflicts_and_rejects_corruption (__main__.Tests.test_review_preserves_conflicts_and_rejects_corruption) ... ok
+test_review_stops_real_cooldown_with_partial_save (__main__.Tests.test_review_stops_real_cooldown_with_partial_save) ... Revisar detenido y guardado en 0.010 s
+ok
+test_stats_unicode_and_empty (__main__.Tests.test_stats_unicode_and_empty) ... ok
+test_tl_route_recovery_writes_before_reporting (__main__.Tests.test_tl_route_recovery_writes_before_reporting) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.161s
+
+OK
+
+test_inflight_request_cancelled_without_waiting_for_60s_timeout PASS
+test_cooperative_children_all_cancelled_and_no_retry PASS
+test_pre_cancel_does_not_start_or_leak_coroutine PASS
+test_normal_result_and_real_error_still_propagate PASS
+test_cancel_does_not_wait_for_sdk_executor_thread PASS
+test_cleanup_is_bounded_even_if_client_close_stalls PASS
+test_actual_primary_method_cancels_request_and_preserves_cache PASS
+test_cancel_during_online_detection_closes_temporary_detector PASS
+test_single_click_acknowledged_and_duplicate_click_ignored PASS
+test_callback_cancellation_interrupts_interface_retry_sleep PASS
+test_write_cancel_latency_evidence PASS
+11 {'last_stop': 1487.842328874, 'request_cancel_seconds': 0.00017621000006329268, 'executor_cancel_seconds': 0.00021502799995687383, 'primary_stop_seconds': 0.00046160399983818934, 'backoff_cancel_seconds': 0.02515789299991411}
+
+PAQUETE_COMPARTIR 0
+PAQUETE_SDK 0
+PAQUETES_SUMADOS 0
+RUNTIME_MOD_V5 0
+
+---
+
+REVISIÓN 2026-11-05_MODv5 — Desarrollador
+Título actual: Traductor de Ren'Py. Runtime MOD v5.
+
+Este documento se ha revisado en el contexto de la fuente actual: título «Traductor de Ren'Py», correcciones previas conservadas, runtime del MOD v5 y migración transaccional de scripts propios. Sus afirmaciones antiguas de pruebas, rutas o estructura se conservan como antecedentes identificados, no como evidencia de esta entrega. El estado completo y las limitaciones están en la guía y los resultados actuales.
+
+Resultados actuales: RESULTADOS_PRUEBAS.md y PRUEBAS_RENPY_744.json.
+
+REGISTRO HISTÓRICO CONSERVADO (NO ES UNA NUEVA EJECUCIÓN):
+
+/root/.local/lib/python3.12/site-packages/pytest_asyncio/plugin.py:300: PytestDeprecationWarning: The configuration option "asyncio_default_fixture_loop_scope" is unset.
+The event loop scope for asynchronous fixtures will default to the "fixture" caching scope. Future versions of pytest-asyncio will default the loop scope for asynchronous fixtures to "function" scope. Set the default fixture loop scope explicitly in order to avoid unexpected behavior in the future. Valid fixture loop scopes are: "function", "class", "module", "package", "session"
+
+  warnings.warn(PytestDeprecationWarning(_DEFAULT_FIXTURE_LOOP_SCOPE_UNSET))
+........................................................................ [ 14%]
+.............................s.......................................... [ 29%]
+........................................................................ [ 44%]
+........................................................................ [ 59%]
+........................................................................ [ 74%]
+........................................................................ [ 89%]
+....................................................                     [100%]
+=============================== warnings summary ===============================
+work/trial_build/tests/test_rpyc_reader.py::TestProcessNodePython::test_python_code_obj_processed
+work/trial_build/tests/test_rpyc_reader.py::TestProcessNodePython::test_python_code_obj_processed
+work/trial_build/tests/test_rpyc_reader.py::TestProcessNodePython::test_python_code_obj_processed
+work/trial_build/tests/test_rpyc_reader.py::TestProcessNodePython::test_python_code_obj_processed
+work/trial_build/tests/test_rpyc_reader.py::TestProcessNodePython::test_python_code_obj_processed
+work/trial_build/tests/test_rpyc_reader.py::TestProcessNodePython::test_python_code_obj_processed
+  /workspace/scratch/8d97a23ac631/work/trial_build/trial_flat.py:164792: DeprecationWarning: ast.Str is deprecated and will be removed in Python 3.14; use ast.Constant instead
+    elif hasattr(LN_src_core_rpyc_reader__ast, 'Str') and isinstance(node, LN_src_core_rpyc_reader__ast.Str):
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+483 passed, 1 skipped, 6 warnings in 18.14s

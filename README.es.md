@@ -51,6 +51,8 @@ conexión a Internet.
 - Análisis de archivos `.rpy`, `.rpyc` y contenido empaquetado compatible.
 - Revisión de traducciones y correcciones manuales.
 - Herramientas MOD para traducir la interfaz y aplicar correcciones desde la app.
+- Una utilidad avanzada **Aligerar el juego** que crea una copia más liviana
+  sin escribir en el juego original.
 - Cola de trabajos, progreso, cancelación y recuperación de operaciones
   interrumpidas.
 - Controles para la clave API de DeepL y motores de traducción incluidos.
@@ -61,6 +63,22 @@ conexión a Internet.
 El flujo MOD es independiente de la traducción principal. Que la preparación
 del texto termine no garantiza que el juego vaya a iniciar correctamente; la
 aplicación informa textos pendientes y avisos de verificación.
+
+## Aligerar una copia del juego
+
+En **Utilidades → Aligerar el juego** (modo avanzado) puedes calcular el ahorro
+o crear una copia optimizada independiente. Elige compresión sin pérdida,
+equilibrada o máxima; hay opciones para PC antiguo, copias solo para Windows y
+equipos con poca memoria. Prueba la copia antes de reemplazar o borrar archivos
+del juego.
+
+La optimización de audio y vídeo necesita FFmpeg, un programa aparte. El EXE
+portable puede descargarlo al usar la herramienta por primera vez; la versión
+en carpeta puede incluirlo. Sin FFmpeg, el audio y el vídeo se copian sin
+cambios. Las bibliotecas de imagen son opcionales, por lo que algunos modos de
+compresión podrían no estar disponibles. Consulta la
+[guía del optimizador](docs/ALIGERAR_JUEGO.md) y las
+[instrucciones de compilación](docs/COMPILAR.md).
 
 ## Cancelar y restaurar
 
@@ -97,12 +115,15 @@ predeterminados usan el punto de entrada 1.5.5.
 - Ejecutar desde el código en Windows: `run.bat`
 - Compilar carpeta portable en Windows: `build_windows.bat`
 - Crear instalador de Windows: `build_installer.bat` (requiere Inno Setup 6.5+)
-- Compilar la fuente autónoma directamente en Windows: `COMPILAR_1_5_5.bat`
+- Compilar directamente una carpeta en Windows: `COMPILAR.bat`
+- Compilar directamente un EXE portable único: `COMPILAR_PORTABLE.bat`
+- Punto de compilación directa anterior: `COMPILAR_1_5_5.bat`
 - Ayuda de la CLI: `python LinguaNova_Traductor_RenPy.py --cli --help`
 
-El ZIP contiene informes históricos de pruebas de una compilación de ensayo;
-no sustituyen la ejecución de las pruebas de este repositorio sobre esta misma
-fuente. El ejecutable de Windows y el juego elegido deben probarse en sus
+Las evidencias fechadas de la entrega se conservan en
+[`docs/archive/2026-11-11-zip/`](docs/archive/2026-11-11-zip/); sus informes
+históricos no sustituyen la ejecución de las pruebas de este repositorio sobre
+esta fuente. El ejecutable de Windows y el juego elegido deben probarse en sus
 sistemas de destino. Consulta la [guía 1.5.5](docs/LEEME_1_5_5.md) para conocer
 las limitaciones.
 

@@ -1,0 +1,5 @@
+# Optional, binary-only dependencies for the game optimizer.
+pillow>=10.0
+pyoxipng>=9.0
+imagequant>=1.1
+mozjpeg-lossless-optimization>=1.1

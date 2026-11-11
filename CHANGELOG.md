@@ -6,6 +6,17 @@ render_with_liquid: false
 
 # LinguaNova Changelog
 
+#### [1.5.5] - 2026-11-11
+
+- Add the advanced **Lighten the game** utility, which estimates savings and
+  creates a separate optimized copy with cancellation and a report.
+- Support lossless, balanced, and maximum image/audio/video compression modes,
+  optional FFmpeg discovery/download, and optional image libraries.
+- Add Windows folder and single-file portable build scripts, plus the required
+  icon and loading-screen resources.
+- Preserve the accompanying delivery documentation and test evidence in a
+  dated archive; repository test results remain independently verifiable.
+
 #### [1.5.5] - 2026-10-26
 
 - Add a verified trial workflow with file-level recovery records, protected

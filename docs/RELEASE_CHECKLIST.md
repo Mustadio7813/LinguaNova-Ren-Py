@@ -15,6 +15,9 @@
 - [ ] Se revisaron archivos de configuración y logs.
 - [ ] El actualizador valida integridad antes de ejecutar/reemplazar archivos.
 - [ ] Se probaron descargas interrumpidas y fallos de red.
+- [ ] La utilidad de optimización trabaja sobre una copia y deja intacto el original.
+- [ ] La descarga de FFmpeg comprueba SHA-256, conserva la licencia y registra su origen.
+- [ ] El EXE portable y la versión en carpeta se probaron con y sin FFmpeg.
 
 ## Terceros
 
@@ -22,6 +25,8 @@
 - [ ] Se inspeccionó el contenido real del paquete final.
 - [ ] Se recopilaron licencias/avisos requeridos de los componentes incluidos.
 - [ ] `THIRD_PARTY_NOTICES.md` fue actualizado para la Release.
+- [ ] Se auditaron Pillow, pyoxipng, imagequant, mozjpeg y FFmpeg según lo que
+      realmente se incluyó en cada paquete.
 
 ## Binarios
 

@@ -1,0 +1,11 @@
+REVISIÓN 2026-11-05_MODv5
+
+estandar {'status': 'OK', 'runtime': "Ren'Py 7.4.4.1439"}
+japones {'status': 'OK', 'runtime': "Ren'Py 7.4.4.1439"}
+before {'status': 'EXPECTED_V4_RECURSION', 'runtime': "Ren'Py 7.4.4.1439"}
+mixed {'status': 'OK', 'runtime': "Ren'Py 7.4.4.1439"}
+ALL RENPY 7.4.4 REGRESSIONS PASSED
+
+SCALE SDK PASS {'status': 'OK', 'runtime': "Ren'Py 7.4.4.1439", 'copies': 2, 'entries': 62476}
+
+SAVE LOAD SDK PASS {'status': 'OK_SAVE_LOAD', 'runtime': "Ren'Py 7.4.4.1439", 'copies': 2, 'screenshot': 'fixture'}

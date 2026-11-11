@@ -1,0 +1,91 @@
+REVISIÓN 2026-11-05_MODv5 — Desarrollador
+Título actual: Traductor de Ren'Py. Runtime MOD v5.
+
+Se conservaron las correcciones previas de DeepL y el aislamiento de claves de compilación. Sus referencias de configuración y proxies se verificaron con el resto de motores. Los resultados antiguos de esta área son históricos; no representan una nueva llamada con credenciales ni una nueva compilación de Windows. Consultar los registros actuales para las pruebas ejecutadas.
+
+Resultados actuales: RESULTADOS_PRUEBAS.md y PRUEBAS_RENPY_744.json.
+
+REGISTRO HISTÓRICO CONSERVADO (NO ES UNA NUEVA EJECUCIÓN):
+
+qrc:/linguanova/src/gui/qml/components/EditorPage.qml:729:5: QML Dialog: Binding loop detected for property "implicitWidth":
+qrc:/qt-project.org/imports/QtQuick/Controls/Material/Dialog.qml:14:5
+qrc:/linguanova/src/gui/qml/Main.qml:424:5: QML Dialog: Binding loop detected for property "implicitWidth":
+qrc:/qt-project.org/imports/QtQuick/Controls/Material/Dialog.qml:14:5
+qrc:/linguanova/src/gui/qml/components/EditorPage.qml:729:5: QML Dialog: Binding loop detected for property "implicitWidth":
+qrc:/qt-project.org/imports/QtQuick/Controls/Material/Dialog.qml:14:5
+qrc:/linguanova/src/gui/qml/Main.qml:424:5: QML Dialog: Binding loop detected for property "implicitWidth":
+qrc:/qt-project.org/imports/QtQuick/Controls/Material/Dialog.qml:14:5
+qrc:/linguanova/src/gui/qml/components/EditorPage.qml:729:5: QML Dialog: Binding loop detected for property "implicitWidth":
+qrc:/qt-project.org/imports/QtQuick/Controls/Material/Dialog.qml:14:5
+qrc:/linguanova/src/gui/qml/Main.qml:424:5: QML Dialog: Binding loop detected for property "implicitWidth":
+qrc:/qt-project.org/imports/QtQuick/Controls/Material/Dialog.qml:14:5
+qrc:/linguanova/src/gui/qml/components/EditorPage.qml:729:5: QML Dialog: Binding loop detected for property "implicitWidth":
+qrc:/qt-project.org/imports/QtQuick/Controls/Material/Dialog.qml:14:5
+qrc:/linguanova/src/gui/qml/Main.qml:424:5: QML Dialog: Binding loop detected for property "implicitWidth":
+qrc:/qt-project.org/imports/QtQuick/Controls/Material/Dialog.qml:14:5
+qrc:/linguanova/src/gui/qml/components/EditorPage.qml:729:5: QML Dialog: Binding loop detected for property "implicitWidth":
+qrc:/qt-project.org/imports/QtQuick/Controls/Material/Dialog.qml:14:5
+qrc:/linguanova/src/gui/qml/Main.qml:424:5: QML Dialog: Binding loop detected for property "implicitWidth":
+qrc:/qt-project.org/imports/QtQuick/Controls/Material/Dialog.qml:14:5
+qrc:/linguanova/src/gui/qml/components/EditorPage.qml:729:5: QML Dialog: Binding loop detected for property "implicitWidth":
+qrc:/qt-project.org/imports/QtQuick/Controls/Material/Dialog.qml:14:5
+qrc:/linguanova/src/gui/qml/Main.qml:424:5: QML Dialog: Binding loop detected for property "implicitWidth":
+qrc:/qt-project.org/imports/QtQuick/Controls/Material/Dialog.qml:14:5
+qrc:/linguanova/src/gui/qml/components/EditorPage.qml:729:5: QML Dialog: Binding loop detected for property "implicitWidth":
+qrc:/qt-project.org/imports/QtQuick/Controls/Material/Dialog.qml:14:5
+qrc:/linguanova/src/gui/qml/Main.qml:424:5: QML Dialog: Binding loop detected for property "implicitWidth":
+qrc:/qt-project.org/imports/QtQuick/Controls/Material/Dialog.qml:14:5
+qrc:/linguanova/src/gui/qml/components/EditorPage.qml:729:5: QML Dialog: Binding loop detected for property "implicitWidth":
+qrc:/qt-project.org/imports/QtQuick/Controls/Material/Dialog.qml:14:5
+qrc:/linguanova/src/gui/qml/Main.qml:424:5: QML Dialog: Binding loop detected for property "implicitWidth":
+qrc:/qt-project.org/imports/QtQuick/Controls/Material/Dialog.qml:14:5
+qrc:/linguanova/src/gui/qml/components/EditorPage.qml:729:5: QML Dialog: Binding loop detected for property "implicitWidth":
+qrc:/qt-project.org/imports/QtQuick/Controls/Material/Dialog.qml:14:5
+qrc:/linguanova/src/gui/qml/Main.qml:424:5: QML Dialog: Binding loop detected for property "implicitWidth":
+qrc:/qt-project.org/imports/QtQuick/Controls/Material/Dialog.qml:14:5
+qrc:/linguanova/src/gui/qml/components/EditorPage.qml:729:5: QML Dialog: Binding loop detected for property "implicitWidth":
+qrc:/qt-project.org/imports/QtQuick/Controls/Material/Dialog.qml:14:5
+qrc:/linguanova/src/gui/qml/Main.qml:424:5: QML Dialog: Binding loop detected for property "implicitWidth":
+qrc:/qt-project.org/imports/QtQuick/Controls/Material/Dialog.qml:14:5
+qrc:/linguanova/src/gui/qml/components/EditorPage.qml:729:5: QML Dialog: Binding loop detected for property "implicitWidth":
+qrc:/qt-project.org/imports/QtQuick/Controls/Material/Dialog.qml:14:5
+qrc:/linguanova/src/gui/qml/Main.qml:424:5: QML Dialog: Binding loop detected for property "implicitWidth":
+qrc:/qt-project.org/imports/QtQuick/Controls/Material/Dialog.qml:14:5
+qrc:/linguanova/src/gui/qml/components/EditorPage.qml:729:5: QML Dialog: Binding loop detected for property "implicitWidth":
+qrc:/qt-project.org/imports/QtQuick/Controls/Material/Dialog.qml:14:5
+qrc:/linguanova/src/gui/qml/Main.qml:424:5: QML Dialog: Binding loop detected for property "implicitWidth":
+qrc:/qt-project.org/imports/QtQuick/Controls/Material/Dialog.qml:14:5
+qrc:/linguanova/src/gui/qml/components/EditorPage.qml:729:5: QML Dialog: Binding loop detected for property "implicitWidth":
+qrc:/qt-project.org/imports/QtQuick/Controls/Material/Dialog.qml:14:5
+qrc:/linguanova/src/gui/qml/Main.qml:424:5: QML Dialog: Binding loop detected for property "implicitWidth":
+qrc:/qt-project.org/imports/QtQuick/Controls/Material/Dialog.qml:14:5
+qrc:/linguanova/src/gui/qml/components/EditorPage.qml:729:5: QML Dialog: Binding loop detected for property "implicitWidth":
+qrc:/qt-project.org/imports/QtQuick/Controls/Material/Dialog.qml:14:5
+qrc:/linguanova/src/gui/qml/Main.qml:424:5: QML Dialog: Binding loop detected for property "implicitWidth":
+qrc:/qt-project.org/imports/QtQuick/Controls/Material/Dialog.qml:14:5
+qrc:/linguanova/src/gui/qml/components/EditorPage.qml:729:5: QML Dialog: Binding loop detected for property "implicitWidth":
+qrc:/qt-project.org/imports/QtQuick/Controls/Material/Dialog.qml:14:5
+qrc:/linguanova/src/gui/qml/Main.qml:424:5: QML Dialog: Binding loop detected for property "implicitWidth":
+qrc:/qt-project.org/imports/QtQuick/Controls/Material/Dialog.qml:14:5
+qrc:/linguanova/src/gui/qml/components/EditorPage.qml:729:5: QML Dialog: Binding loop detected for property "implicitWidth":
+qrc:/qt-project.org/imports/QtQuick/Controls/Material/Dialog.qml:14:5
+qrc:/linguanova/src/gui/qml/Main.qml:424:5: QML Dialog: Binding loop detected for property "implicitWidth":
+qrc:/qt-project.org/imports/QtQuick/Controls/Material/Dialog.qml:14:5
+qrc:/linguanova/src/gui/qml/components/EditorPage.qml:729:5: QML Dialog: Binding loop detected for property "implicitWidth":
+qrc:/qt-project.org/imports/QtQuick/Controls/Material/Dialog.qml:14:5
+qrc:/linguanova/src/gui/qml/Main.qml:424:5: QML Dialog: Binding loop detected for property "implicitWidth":
+qrc:/qt-project.org/imports/QtQuick/Controls/Material/Dialog.qml:14:5
+qrc:/linguanova/src/gui/qml/components/EditorPage.qml:729:5: QML Dialog: Binding loop detected for property "implicitWidth":
+qrc:/qt-project.org/imports/QtQuick/Controls/Material/Dialog.qml:14:5
+qrc:/linguanova/src/gui/qml/Main.qml:424:5: QML Dialog: Binding loop detected for property "implicitWidth":
+qrc:/qt-project.org/imports/QtQuick/Controls/Material/Dialog.qml:14:5
+qrc:/linguanova/src/gui/qml/components/EditorPage.qml:729:5: QML Dialog: Binding loop detected for property "implicitWidth":
+qrc:/qt-project.org/imports/QtQuick/Controls/Material/Dialog.qml:14:5
+qrc:/linguanova/src/gui/qml/Main.qml:424:5: QML Dialog: Binding loop detected for property "implicitWidth":
+qrc:/qt-project.org/imports/QtQuick/Controls/Material/Dialog.qml:14:5
+qrc:/linguanova/src/gui/qml/components/EditorPage.qml:729:5: QML Dialog: Binding loop detected for property "implicitWidth":
+qrc:/qt-project.org/imports/QtQuick/Controls/Material/Dialog.qml:14:5
+qrc:/linguanova/src/gui/qml/Main.qml:424:5: QML Dialog: Binding loop detected for property "implicitWidth":
+qrc:/qt-project.org/imports/QtQuick/Controls/Material/Dialog.qml:14:5
+[AppBackend] AI translator could not be set up: No API key was provided. Please pass a valid API key. Learn how to create an API key at https://ai.google.dev/gemini-api/docs/api-key.
+{'card_height': 206.0, 'card_width': 1240.0, 'input': {'x': 22.0, 'y': 130.0, 'width': 988.0, 'height': 36.0, 'visible': True, 'inside': True}, 'save': {'x': 1018.0, 'y': 130.0, 'width': 96.0, 'height': 36.0, 'visible': True, 'inside': True}, 'delete': {'x': 1122.0, 'y': 130.0, 'width': 96.0, 'height': 36.0, 'visible': True, 'inside': True}}

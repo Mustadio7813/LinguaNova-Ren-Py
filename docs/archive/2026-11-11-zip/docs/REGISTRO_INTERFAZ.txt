@@ -1,0 +1,36 @@
+# Revisión actual de cobertura y Revisar
+
+La barra se sincronizó con la cobertura del archivo. Se comprobó la lógica del backend con señales simuladas. La interfaz Qt real quedó pendiente de verificación.
+
+---
+
+REVISIÓN 2026-11-05_MODv5 — Desarrollador
+Título actual: Traductor de Ren'Py. Runtime MOD v5.
+
+Este documento se ha revisado en el contexto de la fuente actual: título «Traductor de Ren'Py», correcciones previas conservadas, runtime del MOD v5 y migración transaccional de scripts propios. Sus afirmaciones antiguas de pruebas, rutas o estructura se conservan como antecedentes identificados, no como evidencia de esta entrega. El estado completo y las limitaciones están en la guía y los resultados actuales.
+
+Resultados actuales: RESULTADOS_PRUEBAS.md y PRUEBAS_RENPY_744.json.
+
+REGISTRO HISTÓRICO CONSERVADO (NO ES UNA NUEVA EJECUCIÓN):
+
+qrc:/linguanova/src/gui/qml/components/EditorPage.qml:729:5: QML Dialog: Binding loop detected for property "implicitWidth":
+qrc:/qt-project.org/imports/QtQuick/Controls/Material/Dialog.qml:14:5
+qrc:/linguanova/src/gui/qml/Main.qml:424:5: QML Dialog: Binding loop detected for property "implicitWidth":
+qrc:/qt-project.org/imports/QtQuick/Controls/Material/Dialog.qml:14:5
+qrc:/linguanova/src/gui/qml/components/EditorPage.qml:729:5: QML Dialog: Binding loop detected for property "implicitWidth":
+qrc:/qt-project.org/imports/QtQuick/Controls/Material/Dialog.qml:14:5
+qrc:/linguanova/src/gui/qml/Main.qml:424:5: QML Dialog: Binding loop detected for property "implicitWidth":
+qrc:/qt-project.org/imports/QtQuick/Controls/Material/Dialog.qml:14:5
+qrc:/linguanova/src/gui/qml/components/EditorPage.qml:729:5: QML Dialog: Binding loop detected for property "implicitWidth":
+qrc:/qt-project.org/imports/QtQuick/Controls/Material/Dialog.qml:14:5
+qrc:/linguanova/src/gui/qml/Main.qml:424:5: QML Dialog: Binding loop detected for property "implicitWidth":
+qrc:/qt-project.org/imports/QtQuick/Controls/Material/Dialog.qml:14:5
+qrc:/linguanova/src/gui/qml/components/EditorPage.qml:729:5: QML Dialog: Binding loop detected for property "implicitWidth":
+qrc:/qt-project.org/imports/QtQuick/Controls/Material/Dialog.qml:14:5
+qrc:/linguanova/src/gui/qml/Main.qml:424:5: QML Dialog: Binding loop detected for property "implicitWidth":
+qrc:/qt-project.org/imports/QtQuick/Controls/Material/Dialog.qml:14:5
+qrc:/linguanova/src/gui/qml/components/EditorPage.qml:729:5: QML Dialog: Binding loop detected for property "implicitWidth":
+qrc:/qt-project.org/imports/QtQuick/Controls/Material/Dialog.qml:14:5
+qrc:/linguanova/src/gui/qml/Main.qml:424:5: QML Dialog: Binding loop detected for property "implicitWidth":
+qrc:/qt-project.org/imports/QtQuick/Controls/Material/Dialog.qml:14:5
+{'loaded': True, 'language_checks': 5, 'advanced_toggle': True, 'launch_disabled_without_preparation': True, 'single_click_stop': True, 'stopping_label': True, 'restart_button_enabled': True}

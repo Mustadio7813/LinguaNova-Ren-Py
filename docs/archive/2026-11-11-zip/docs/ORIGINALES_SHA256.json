@@ -1,0 +1,17 @@
+{
+  "revision": "2026-11-11_ALIGERAR_JUEGO",
+  "baseline_archive": "LinguaNova_Traductor_RenPy_1.5.5_Desarrollador_CORREGIDO.zip",
+  "baseline_source_sha256": "c2e37cdec1ddf69764a55c9bf46032db84f2f045bff85274e8b4ebc339a8490f",
+  "current_source_sha256": "f22e843941f2b5a2de5aeeb3699e8bad7942030304d4818b2cd4d256514535a3",
+  "historical_originals": {
+    "output/LinguaNova_1.5.5_completo.py": "f83b6d0c994eebabe19885696fb7febf7c442f582c14a577c6110101465c7ebc",
+    "output/LinguaNova_1.5.5_usuario.zip": "0208be213b8b7b708efbbed7a616f94c9a879244cd9e713746b94e03e0b2ecd7",
+    "upload/LinguaNova_1.5.5_usuario.zip": "4dcef8b91d01b2d0b9a2798317b4873368be4903f49e5b400f7e84c7e3ceff40"
+  },
+  "previous_baseline": {
+    "revision": "2026-11-09_COBERTURA_REVISAR",
+    "baseline_archive": "LinguaNova_Traductor_RenPy_1.5.5(5).zip",
+    "baseline_source_sha256": "690237036274bfe66f0dd50e39cf5d74978164f13bf97533326fba98484a44ac",
+    "current_source_sha256": "c2e37cdec1ddf69764a55c9bf46032db84f2f045bff85274e8b4ebc339a8490f"
+  }
+}

@@ -1,49 +1,23 @@
-# LinguaNova 1.5.5 — primeros pasos
+<!-- 2026-11-11_ALIGERAR_JUEGO -->
+# Novedad: Aligerar el juego
 
-## Ejecutar
+Utilidades (modo avanzado) incluye **Aligerar el juego**, que crea una copia más liviana del juego. Para el audio y el vídeo usa **ffmpeg**, un programa aparte:
 
-- **Windows:** ejecuta `run.bat`. Se necesita Python 3.10 o posterior.
-- **Linux/macOS:** ejecuta `./LinguaNova.sh` o
-  `python3 LinguaNova_Traductor_RenPy.py`.
-- **CLI:** `python LinguaNova_Traductor_RenPy.py --cli --help`.
+- **COMPILAR.bat** (versión en carpeta) lo incluye en `dist/…/ffmpeg/`: lo copia de `recursos/ffmpeg/ffmpeg.exe` si lo dejas ahí, o lo descarga.
+- **COMPILAR_PORTABLE.bat** no lo incluye: el programa lo descarga la primera vez que se usa la herramienta, o se elige un `ffmpeg.exe`.
 
-La primera ejecución desde el código puede preparar un entorno e instalar
-dependencias; se requiere Internet para esa preparación.
+Detalle en `docs/ALIGERAR_JUEGO.md`.
 
-## Traducir un juego
+---
 
-1. Cierra el juego y crea una copia de seguridad.
-2. Selecciona la carpeta del juego o un ejecutable compatible de Ren'Py.
-3. Elige idiomas y motor de traducción.
-4. Inicia la traducción, espera a que el proceso termine y revisa los avisos.
-5. Abre una copia del juego y comprueba los textos antes de compartirla.
+# LinguaNova Traductor de Ren'Py 1.5.5
 
-Esta versión no traduce texto incrustado en imágenes mediante OCR. Los
-resultados automáticos pueden necesitar revisión manual.
+- Para iniciar desde el código fuente en Windows: **INICIAR.bat**.
+- Para generar el ejecutable de Windows hay dos opciones:
+  - **COMPILAR_PORTABLE.bat**: un solo archivo con todo dentro, `dist_portable/LinguaNova Traductor de Ren'Py.exe`. Se reparte tal cual; tarda unos segundos más en abrir.
+  - **COMPILAR.bat**: carpeta `dist/LinguaNova Traductor de Ren'Py/`, con el `.exe` (pesa solo unos MB) y `_internal` (Qt y Python). Arranca al instante; se reparte la carpeta completa, incluida `_internal`.
 
-## Detener y restaurar
+Los dos usan el ícono de `recursos/linguanova.ico`; no borres la carpeta `recursos`.
 
-Pulsa **Detener** una vez y espera a que se guarde el progreso. Para restaurar
-los archivos respaldados por la última operación:
-
-```text
-python LinguaNova_Traductor_RenPy.py --restaurar "RUTA_DEL_JUEGO" --idioma spanish
-```
-
-Cierra el juego antes de restaurar. La operación verifica rutas y archivos
-antes de reemplazarlos; consulta [la guía 1.5.5](docs/LEEME_1_5_5.md).
-
-## Archivos importantes
-
-| Archivo | Función |
-| --- | --- |
-| `LinguaNova_Traductor_RenPy.py` | Aplicación autónoma 1.5.5. |
-| `run.bat` | Lanzador de Windows para la versión 1.5.5. |
-| `COMPILAR_1_5_5.bat` | Compilar la aplicación autónoma en Windows. |
-| `build_windows.bat` | Compilar la distribución del repositorio con PyInstaller. |
-| `build_installer.bat` | Crear instalador y paquete portable de Windows. |
-| `pruebas.bat` | Ejecutar las pruebas del repositorio. |
-
-LinguaNova se distribuye bajo GPL-3.0-or-later. Conserva los avisos de
-[LICENSE](LICENSE), [NOTICE.md](NOTICE.md) y
-[THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+Lee `docs/LEEME.md` y `docs/COMPILAR.md` para los detalles de uso y compilación.
+El paquete contiene el código fuente; no incluye un EXE ya compilado.

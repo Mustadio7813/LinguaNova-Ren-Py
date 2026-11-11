@@ -1,3 +1,17 @@
+<!-- 2026-11-11_ALIGERAR_JUEGO -->
+## 2026-11-11 — Aligerar el juego
+
+Modificación de LinguaNova (derivado de RenLocalizer, GPL v3) hecha el 11 de noviembre de 2026:
+
+- Nuevo módulo `src/tools/game_optimizer.py`: copia optimizada de un juego Ren'Py y estimación del ahorro, adaptados del Optimizador Ren'Py v3 del mismo autor (sin consola, con cancelación y avance por callbacks).
+- Nuevo backend `src/backend/optimizer_backend.py` (`optimizerBackend`) y componente `OptimizeGameCard.qml` en Utilidades.
+- Claves de interfaz `opt_*` en los cinco idiomas.
+- Dependencias opcionales `LN_OPTIONAL_DEPENDENCIES` e instalador `LN_start__ensure_optional`.
+- Opción `--descargar-ffmpeg`; `COMPILAR.bat` incluye ffmpeg en la versión en carpeta.
+- `main` crea y detiene `optimizerBackend`.
+
+---
+
 # MODIFICATIONS — LinguaNova
 
 ## Scope and baseline
@@ -671,3 +685,334 @@ catalogue and unrelated locale files are not included.
 - Regression tests cover automatic installation with menu on/off, legacy font
   preservation, the independent font utility and MOD output, idempotence and
   failed writes. SDK validation includes actual Cyrillic font loading.
+
+### 40. Version 1.3.0: RenLocalizer 2.8.20 behaviour as new LinguaNova modules — 2026-10-24
+
+The behaviour below matches what RenLocalizer 2.8.20 added; it was written
+again for LinguaNova as separate modules (no code copied from 2.8.20) and
+connected to the existing code with small call-site changes.
+
+- `src/core/integrity/` (new): `tag_order.py` puts back tag pairs an engine
+  swapped (`{/i}word{i}` → `{i}word{/i}`, source spacing kept) and is applied
+  before the guard in `pipeline/translating.py` and in the MOD
+  (`ui_mod/generator.py`); a repaired result is written back to the cache.
+  `ascii_placeholders.py` restores `__PH_n__` answers inside
+  `syntax_guard.restore_renpy_syntax_xml()`.
+- `src/core/pipeline/rpyc_policy.py` (new): one tri-state RPYC decision used by
+  the orchestrator, `extraction.audit_compiled_only_scripts()` and
+  `collect_coverage_warnings()`; `--no-rpyc` is no longer re-enabled by the
+  setting during extraction.
+- `src/core/ai_parallel.py` (new): pipeline step = request size × AI
+  Concurrency for OpenAI/DeepSeek/Gemini; translator semaphores follow AI
+  Concurrency within 5 / 12 / 3 (no ceiling for local OpenAI-compatible
+  servers); the batch-size cap notice is only shown for real reductions.
+- `src/core/existing_translations.py` and `src/utils/rpa_members.py` (new):
+  `translate <language> strings` owners in loose scripts, compiled-only
+  `.rpyc` and `.rpa` archives, read without extracting whole archives.
+- `src/core/sharing/` (new) and `src/backend/sharing_backend.py` (new): ZIP/RAR
+  package of `game/tl` plus LinguaNova helper scripts and fonts, verified
+  against the disk and published atomically.
+- `src/core/project_inspector.py`, `src/utils/recent_projects.py` and
+  `src/backend/dashboard_backend.py` (new): project card, drag and drop,
+  recent games (setting `remember_recent_projects`, never auto-selected),
+  *Launch game* and *Review in editor*.
+- Editor: `problemFor()` and `repairedTags()` slots; live warnings, Ctrl+Enter
+  to the next line, *Fix tag order*, no Apply button.
+- QML: `components/Theme.qml` singleton (palette and type scale bound by
+  `Main.qml`), `PageHeader`, `ThemedButton`, `ProjectCard`, `ProjectDropArea`,
+  `RecentProjectsButton`, `MultiLanguageCard`, `SharePackageCard`; 111
+  `Qt.rgba()` calls moved from 0–255 to 0–1 channels.
+- Fixes found while doing this: a game installed in a folder literally named
+  `Game` was mistaken for its own `game/` folder by the pipeline and the
+  utilities (the project one level up was used); `startAllTranslations()`
+  no longer queues a known source language; `docs/ORIGEN_ARCHIVOS.json` no
+  longer requires the five interface catalogs removed by the five-language
+  variant, so `verificar.bat` passes again; a stray "MIT License" header line
+  was removed from `syntax_guard.py`.
+- Tests: `test_integrity_repairs.py`, `test_rpyc_policy_and_ai_parallel.py`,
+  `test_existing_translations.py`, `test_translation_package.py`,
+  `test_project_inspector.py`, `test_dashboard_sharing_backends.py`,
+  `test_interface_1_3.py`, `test_cache_poisoning_guard.py`; `test_audit_20261018.py` and
+  `test_ai_translator.py` updated to the new behaviour.
+
+### 41. MOD Beta 0.1.0-beta: procedural in-game panel (test version) — 2026-10-24
+
+New page **MOD Beta** next to **MOD**, written as new code that shares nothing
+with `src/ui_mod/` (no imports in either direction; the MOD's files,
+settings and generated scripts are untouched and skipped by the analysis).
+
+- `src/mod_beta/` (new): `sources.py` (loose scripts, `.rpa` members and
+  compiled-only `.rpyc` through the restricted reader; LinguaNova's own
+  generated files skipped), `analyzer.py` (code vs. usable text, characters,
+  numeric values with ranges from comparisons/clamps/changes, `persistent`
+  options, gallery/replay unlocks, theme, hotkey), `fonts.py` (font
+  readability and per-language coverage with a DejaVu Sans fallback),
+  `strings.py` / `languages.py` (panel texts in es/en/fr/pt/ru),
+  `engines.py` (optional per-language machine translation of the game's
+  labels with its own translation manager), `runtime_template.py` (Ren'Py
+  code of the panel: seeded design, language switch, undo, clamp) and
+  `emitter.py` (analyse, write `game/zz_linguanova_panel.rpy` atomically, remove,
+  report).
+- `src/backend/mod_beta_backend.py` (new): `modBetaBackend` context property
+  with its own settings file `mod_beta.json` and worker thread.
+- QML: `components/ModBetaPage.qml` (new), menu entry `nav_mod_beta` (page 7,
+  available during a translation like the MOD), 43 new locale keys in the
+  five catalogs.
+- Nothing from any sample script is built in: every value, name and label
+  comes from the analysed game; the design is computed in the game from a
+  fresh seed and is not stored in the file.
+- Tests: `tests/test_mod_beta.py` (15 tests, including the panel runtime run
+  against a stand-in Ren'Py namespace and the page backend with a stand-in
+  app). The panel's screen-language part has not been run in a real Ren'Py
+  yet; that is what the beta is for.
+
+### 42. MOD Beta 0.1.1-beta: game names no longer replace the panel's functions — 2026-10-24
+
+- `src/mod_beta/runtime_template.py`: the panel's Python runs in the game's
+  store, so a game's `define min = Character(...)` replaced Python's `min()`
+  (crash at startup reported with Photo Hunt 0.21.1, Ren'Py 7.4.4). The
+  Python built-ins it uses are now taken from the interpreter's builtins
+  module (`lnmb_min`, `lnmb_int`, ...), and the Ren'Py actions it uses
+  (`Solid`, `Function`, `Show`, `Hide`, `SetVariable`,
+  `ScreenVariableInputValue`) are taken in an `init -1000` block, before the
+  game's own init code. Text conversion uses `unicode` on Python 2.
+- Test: `test_game_names_do_not_replace_python_or_renpy_functions`.
+
+### 43. Game names can no longer replace the functions of LinguaNova's in-game scripts — 2026-10-24
+
+- Cause: Ren'Py executes `init python` blocks, `translate X python` blocks
+  and screens in the store, where a game's `define min = Character(...)`
+  hides Python's `min()`. Crash reported in `zzz_linguanova_language_menu.rpy`
+  (Photo Hunt 0.21.1, Ren'Py 7.4.4).
+- Each generated script now takes the built-ins it uses from the interpreter's
+  builtins module (`sys.modules["__builtin__"]` on Python 2,
+  `sys.modules["builtins"]` on Python 3) under its own prefix, and the Ren'Py
+  actions it uses in an `init -1000` block, before the game's init code:
+  `src/core/language_menu_template.py` (`_lntl_`),
+  `src/core/runtime_hook_template.py` (`_rlb_`, native, dynamic and v4.2
+  hooks; `import builtins` replaced), `src/tools/font_injector.py`
+  (`_lnfi_`), `src/tools/font_helper.py` (`_lnft_`),
+  `src/core/pipeline/saving.py` (native-menu extension),
+  `src/ui_mod/ui_mod_hook_template.py` (`_lnmod_`, the MOD keeps its own
+  copy; `python_body()` now reads the `init 990` block) and
+  `src/mod_beta/runtime_template.py` (`lnmb_`).
+- Tests: `tests/test_game_names_cannot_break_linguanova_scripts.py` renders
+  every generated script and rejects bare calls of Python built-ins or Ren'Py
+  actions, and runs the language menu and the MOD hook in a game whose
+  characters are called `min`, `max`, `len`, ... Pinned expectations updated
+  in `test_mod_isolation_contract.py`, `test_v283_runtime_perf.py` and
+  `test_multilingual_hot_switch.py`.
+- MOD Beta 0.1.2-beta: panel file `zz_linguanova_panel.rpy` (earlier
+  `zz_lnmb_*` files are removed on generate/remove and skipped by every
+  scanner, now including the main translator through
+  `is_linguanova_generated_script`); language names localized
+  (`mod_beta_lang_*`) and refreshed on interface-language change; header
+  title and summary (`mod_beta_header_hint`) in `Main.qml`.
+- Locales: `nav_mod` / `mod_header_title` in French and Russian were a machine
+  translation of "Ministry of Defence"; restored to "MOD".
+
+### 44. Version 1.4.0: scripts that always start, original language skipped, one five-language summary, Review pending pass, DeepL — 2026-10-24
+
+- `src/core/source_markup/` (new: `literals.py`, `wrapper.py`, `__init__.py`)
+  replaces the regex body of `pipeline/extraction.make_source_translatable()`,
+  which now delegates to it. Exact literal scanner, wrap-only-complete-literal
+  rule, per-file verification, byte-exact encoding/BOM/newlines, one-time
+  backup outside `game/`, repair of lines damaged by <= 1.3.0.
+- `src/core/source_language_probe.py` (new) and
+  `TranslationPipeline._skip_original_language_target()` (orchestrator).
+- `src/backend/batch_report.py` (new); `AppBackend.startAllTranslations()`
+  tags queued jobs with a batch id; `_record_batch_result()`,
+  `_finish_batch_if_complete()`, `batchSummaryReady`, `batchInProgress`;
+  `SerialWorkQueue.drop_pending()` used when a batch is stopped.
+- `DashboardBackend` re-inspects the game after `translationFinished`.
+- `src/core/editor/pending.py` (new); `EditorBackend.translatePending()`,
+  `stopPending()`, `pendingEngines`, `defaultPendingEngine()`,
+  `pendingEngineProblem()`, `pendingSummaryReady`.
+- DeepL: `AppBackend._setup_deepl_translator()`, `saveDeeplApiKey()`,
+  `clearDeeplApiKey()`, `hasDeeplKey`, `deeplKeyHint`; `SettingsBackend` maps
+  "deepl"; `DeepLTranslator` unchanged (official endpoints).
+- QML (new): `BatchSummaryDialog.qml`, `PendingTranslateBar.qml`,
+  `DeeplKeyField.qml`; `Main.qml` and `EditorPage.qml` connect them.
+- Locales: 53 new keys and 6 previously English-only keys in en/es/fr/pt/ru.
+- Tests: `tests/test_source_markup.py`, `tests/test_batch_pending_probe.py`.
+
+### 45. Version 1.4.1: LibreTranslate removed, dead code removed, comments in English — 2026-10-25
+
+- LibreTranslate removed from `src/core/translators/` (`services.py`,
+  `manager.py`, `base.py`, `__init__.py`), `src/core/translator.py`,
+  `src/core/__init__.py`, the pipeline orchestrator, `AppBackend`,
+  `SettingsBackend`, `src/utils/config.py`, `src/cli_main.py`,
+  `src/mod_beta/engines.py`, `src/core/editor/pending.py`, `Main.qml`,
+  `ModBetaPage.qml`, `PendingTranslateBar.qml`, the five locale files, tests
+  and docs.
+- Deleted modules: `src/core/pyparse_grammar.py`,
+  `src/core/translation_pipeline.py`. Unused functions and slots removed from
+  `parser.py`, the orchestrator, `external_tm.py` and `app_backend.py`.
+- Code comments and docstrings translated to English; no code token changed.
+- `scripts/ejecutar_pruebas.py` (new) runs the project check and pytest for
+  `pruebas.bat` and saves the output to `registros_pruebas/`;
+  `docs/ORIGEN_ARCHIVOS.json` no longer lists the two removed modules.
+- Verification: identical `tl/` output hashes on the reference game with the
+  pseudo engine before and after each step; unchanged test pass list.
+
+### 46. Version 1.4.2: save-safe output, game/zz_linguanova/, language choice in the game's screens, fonts per language, coverage by kind of text — 2026-10-25
+
+- `src/core/bounded_output.py` rewritten: dialogue blocks pinned to their
+  file, no `.rpyc` deletion, foreign translation files read-only, string
+  overflow to parts above `strings_file_max_bytes` (512 KiB; replaces
+  `output_max_entries`/`output_max_bytes`), manifests in `.linguanova/`.
+- `TranslationPipeline`: the loop deleting `tl/` `.rpyc` files was removed.
+- `src/core/delivery/` (new): `package.py`, `script.py`, `fonts.py`,
+  `resources.py`. `src/core/language_menu_template.py` was removed; the
+  text-based screen patching in `src/core/pipeline/saving.py` was replaced
+  by calls to the delivery package.
+- `src/core/constants.py`: `DELIVERY_DIR`; `is_linguanova_generated_script()`
+  accepts paths and recognises the folder; its callers pass full paths.
+- Runtime hook, resource filter and Font Injector output moved into
+  `game/zz_linguanova/`; the sharing package includes the folder.
+- `src/core/coverage_report.py` (new) and
+  `TranslationPipeline._write_coverage_report()`.
+- Locales: `pipeline_language_option`, `pipeline_language_fonts`,
+  `pipeline_logs.log_coverage_by_category` added; five obsolete
+  `pipeline_lang_menu_*` keys removed; two Toolbox descriptions updated.
+- Tests: `tests/test_save_safe_output.py`, `tests/test_delivery.py`,
+  `tests/test_coverage_report.py`; language-menu tests rewritten.
+
+### 47. Version 1.4.3: shallow copy of screen nodes, no on-screen MOD Beta button — 2026-10-25
+
+- `src/core/delivery/script.py`: `_lntl_clone()` replaces `copy.deepcopy`
+  plus `_lntl_reserial()`; compiled `PyCode` is shared, child lists and
+  serials are new.
+- `src/mod_beta/runtime_template.py`: `lnmb_access` keeps only the key;
+  `mod_beta_status_generated` updated in the five locales.
+
+### 48. Version 1.5.0: Game MOD replaces MOD Beta; M.O.D. menu with DeepL and one summary — 2026-10-25
+
+- New: `src/game_mod/` (`__init__.py`, `package.py`, `script.py`, `texts.py`),
+  `src/backend/game_mod_backend.py` (`gameModBackend`),
+  `src/gui/qml/components/GameModPage.qml`, `src/core/delivery/graft.py`,
+  `src/core/delivery/validate.py`.
+- Removed: `src/mod_beta/`, `src/backend/mod_beta_backend.py`,
+  `src/gui/qml/components/ModBetaPage.qml`, `tests/test_mod_beta.py`.
+- `src/core/delivery/script.py` uses the shared graft code;
+  `src/core/delivery/package.py` checks the script before writing it and
+  exposes `original_code()`.
+- `src/ui_mod/generator.py`: `ModGenerationResult.language_results`.
+- `AppBackend`: DeepL allowed for the M.O.D. (`_mod_can_start()` guards a
+  missing key), DeepL translator rebuilt on every run,
+  `_emit_mod_batch_summary()`, `_save_batch_report(project, filename)`.
+- `src/utils/config.py`: `deepl` accepted for `mod_selected_engine`.
+- `Main.qml`, `run.py`, `qmldir`: page 7 is the Game MOD.
+- Locales: `game_mod_*`, `nav_game_mod` added; `mod_beta_*`, `nav_mod_beta`
+  removed; `mod_generate_all_btn` renamed in the five languages.
+- Tests: `tests/test_game_mod.py`, `tests/test_mod_menu_deepl_summary.py`;
+  MOD Beta checks moved to the shared validator.
+
+### 49. Version 1.5.5: Spanish and Portuguese variants, one MOD page, one MOD button in the game — 2026-11-01
+
+- Translation languages come from one catalogue (`src/utils/languages.py`):
+  Spanish (`tl/spanish`), English, Portuguese (Brazil,
+  `tl/portuguese_brazil`), French and Russian, with per-engine codes and names. The
+  repeated lists in configuration, MOD, QML, CLI and `locales/*.json` were removed.
+- The DeepL "Portuguese variant" setting was replaced by the language choice
+  (a saved PT-BR is migrated once).
+- The interface MOD and the in-game panel share one page and one game; the
+  interface MOD no longer draws its own language chooser in games.
+- Fixes found with Ren'Py 8.3.7: the MOD panel could not open, and an empty
+  python block would stop the game. See `CHANGELOG.md` (1.5.5) and `docs/IDIOMAS.md`.
+
+### 50. Latin American Spanish and European Portuguese removed; language picker panels — 2026-11-05
+
+- Target languages: Spanish (`tl/spanish`), English, Portuguese (Brazil,
+  `tl/portuguese_brazil`), French and Russian. The Latin American Spanish and
+  European Portuguese entries, their engine warnings and variant checks are gone.
+- A saved Latin American Spanish or European Portuguese choice (translator
+  or MOD) now opens as Spanish or Brazilian Portuguese instead of an
+  unsupported destination.
+- The source and target language panels close as soon as a language is
+  chosen (click or Enter). Each panel closes first and applies the choice
+  afterwards, because applying it rebuilds the list and removes the tile that
+  was clicked.
+- The panels are modal without dimming: a click outside closes them, and
+  opening one closes the other, so both can no longer stay open at once.
+- All five backend `_t` helpers accept a key without an explicit fallback,
+  so the preparation, busy and launch messages no longer close the program
+  with a missing-argument TypeError.
+
+### 51. Share package: only LinguaNova's languages — 2026-11-05
+
+- The share/backup package now holds only the languages made with LinguaNova:
+  a `game/tl/<language>` folder counts when it has a translation file with
+  LinguaNova's header marker, LinguaNova output manifests (`.linguanova/`) or
+  MOD data (`linguanova_mod_*.json`). Each such language goes in whole, with
+  Ren'Py's own files for it and its `.linguanova/` manifests; languages the game
+  shipped with are left out and listed in the log.
+- Paths inside the archive are the game's own (`game/...`), so it is installed
+  by copying its `game/` folder over the game and accepting replacement.
+- The save dialog proposes `<game>_LinguaNova_<languages>.zip` next to the game.
+- The package read-me names each language and ends with choosing it in Preferences.
+
+### 52. Languages from several packages add up — 2026-11-05
+
+- Each installed language now also leaves `game/zz_linguanova/languages/<folder>.json`
+  (its own name and the game fonts that cannot draw it). `linguanova.rpy` reads
+  every such file when the game starts, so packages copied over the same game
+  add up: the last `linguanova.rpy` copied no longer drops the font fixes of the
+  languages that earlier packages brought. Removing LinguaNova removes the folder.
+- The share package also recognises languages whose files came from Ren'Py's SDK
+  and were translated in place by LinguaNova (coverage report in
+  `tl/.diagnostics/<language>/`).
+
+### 53. One glossary per game and per language; whole-game analysis — 2026-11-05
+
+- The glossary belongs to one game and one target language:
+  `game/zz_linguanova/glossary/<language>.json` (never under `game/tl/`, where Ren'Py would list it as a language). The shared `glossary.json` in the
+  data folder is no longer read or written, so terms never reach another game or
+  another language. The translator and the interface MOD use the same file (the MOD's
+  older `linguanova_mod_glossary.json` is read when the new one does not exist yet).
+- Each translation run loads the glossary of its own game and language (batch runs
+  load each language's file); it no longer borrows or rewrites the one shown in the UI.
+- Choosing a game starts a whole-game analysis (`.rpy`, `.rpyc` and `.rpa`) kept in
+  memory for the session only. Its character names are kept untranslated in every run;
+  the extractor button adds them and recurring proper nouns to the current glossary.
+- Empty translations are pending terms: kept in the file, never applied.
+- The glossary page header names the game and language being edited.
+
+### 54. The MOD completes an existing translation instead of adding a second language — 2026-11-05
+
+- The interface MOD completes the language the game already has, whatever it is called:
+  it matches game/tl/ folders by folder name, by the name declared in
+  `translate <language>` (catalogue aliases, accents ignored: espanol, Español,
+  castellano...) or, failing both, by detecting the language of the folder's
+  translated text. It registers its strings under that same Ren'Py language, so
+  the player sees one language, never a second "Spanish".
+- The MOD's own data files are looked up first in that exact folder (manual
+  corrections included).
+- Share package: when the translation in a folder was made by someone else and
+  LinguaNova only added MOD data there, only LinguaNova's files are packed.
+
+### 55. The MOD never touches game/tl/ and joins the game's own language — 2026-11-05
+
+- Fixed rule: the MOD never writes into game/tl/ (no edits, no extra files), whoever
+  made the translations there. Its data lives in game/zz_linguanova/mod/<language>/;
+  data left in game/tl/<language>/ by earlier versions is moved there, and a tl/
+  folder the MOD itself had created is removed once empty.
+- When the game starts, if it has (now or after a future update) a language with the
+  same or a similar name that holds its own translation, the MOD fills THAT language
+  and hides its own from the menu; a player who had chosen the MOD's language is moved
+  to the game's. No regeneration is needed.
+
+## Compilación portable (3 de noviembre de 2026)
+
+- Nuevo `COMPILAR_PORTABLE.bat`: compila un solo `LinguaNova Traductor de Ren'Py.exe` con todo dentro (PyInstaller `--onefile`) en `dist_portable`, con su propio registro `compilacion_portable_error.log`. `COMPILAR.bat` (modo carpeta) no cambia.
+- `LEEME_PRIMERO.md` y `docs/COMPILAR.md` explican las dos formas de compilar y por qué el .exe en modo carpeta pesa solo unos MB.
+- `COMPILAR.bat` y `COMPILAR_PORTABLE.bat` muestran en la ventana el paso en curso (1 de 3, 2 de 3, 3 de 3) y dónde ver el detalle, en lugar de dejarla en negro mientras preparan las dependencias.
+- `COMPILAR.bat` y `COMPILAR_PORTABLE.bat` usan `recursos/linguanova.ico` como ícono del `.exe` y, si el Python incluye Tcl/Tk, `recursos/linguanova_splash.png` como imagen de carga mientras el `.exe` se abre.
+- Código: antes de mostrar su pantalla de carga, el programa cierra la imagen de carga del `.exe` (`pyi_splash`), solo cuando esta existe. No hay más cambios en la aplicación.
+
+### Coverage, recovery and stopping Review — 2026-11-09
+
+- Count eligible translation slots separately from exempt source copies and show matching completion coverage in the UI.
+- Retry unresolved rows with the selected engine, validate each result and preserve protected syntax during segment recovery.
+- Write a per-line JSON report alongside translation diagnostics.
+- Finalize Review promptly on cancellation and save responses already available after the editor's integrity and conflict checks.

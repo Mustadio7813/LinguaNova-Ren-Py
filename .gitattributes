@@ -13,3 +13,7 @@ build/linux/*.desktop text eol=lf
 *.iss text eol=crlf
 *.isl text eol=crlf
 installer/languages/INNO_SETUP_LICENSE.txt text eol=crlf
+
+# Preserve whitespace in imported patch evidence; it represents source lines.
+docs/DIFERENCIAS_IMPLEMENTACION.diff whitespace=-blank-at-eol
+docs/archive/2026-11-11-zip/docs/DIFERENCIAS_IMPLEMENTACION.diff whitespace=-blank-at-eol

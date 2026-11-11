@@ -10,7 +10,12 @@
 | `run_cli_1_5_5.py` | CLI wrapper used by the frozen CLI build. |
 | `LinguaNova.spec` | PyInstaller configuration for the 1.5.5 GUI and CLI. |
 | `COMPILAR_1_5_5.bat` | Standalone Windows build recipe supplied with 1.5.5. |
+| `COMPILAR.bat` | Direct Windows folder build; optionally bundles verified FFmpeg. |
+| `COMPILAR_PORTABLE.bat` | Direct single-file Windows build; FFmpeg remains separate. |
+| `INICIAR.bat` | Direct source launcher included with the 2026-11-11 delivery. |
+| `requirements-optimizer.txt` | Optional binary-only image libraries for Windows builds. |
 | `src/version.py` | Shared project/build version metadata. |
+| `recursos/` | Icon and loading screen used by the direct Windows builds. |
 
 ## Repository contents
 
@@ -19,7 +24,7 @@
 | `src/` | Earlier modular implementation retained for compatibility and regression tests. |
 | `locales/` | Interface catalogs used by the modular compatibility implementation. |
 | `tests/` | Compatibility regressions plus syntax and CLI smoke tests for 1.5.5. |
-| `scripts/` | Repository checks and build helpers. |
+| `scripts/` | Repository checks and build helpers, including the GUI/CLI release builder. |
 | `installer/` | Windows installer definition and localization. |
 | `linguanova_next/` | Separate experimental generation; not the default application. |
 | `.github/` | Automated tests, release workflows, and repository templates. |
@@ -28,14 +33,18 @@
 ## Maintenance notes
 
 The default launcher and GUI release build use the self-contained 1.5.5
-source file. Do not edit `src/` expecting those changes to alter that runtime;
+source file. The 2026-11-11 delivery updates it with the advanced game
+optimizer. Its embedded modules use `LN_src_tools_game_optimizer__` and
+`LN_src_backend_optimizer_backend__` prefixes; they are not separate
+`src/tools/game_optimizer.py` or `src/backend/optimizer_backend.py` files in
+this checkout. Do not edit `src/` expecting those changes to alter that runtime;
 the modular tree remains for compatibility and its existing regression suite.
 The CLI frozen build uses `run_cli_1_5_5.py` to invoke the same standalone
 source with `--cli`.
 
-The original patch bundled with the 1.5.5 ZIP does not apply cleanly to the
-current modular tree. It is not used as a build input. The source file,
-version metadata, launchers, and build entry points are updated independently.
+The older modular tree and the standalone 1.5.5 source have different release
+histories. Do not apply a monolithic diff to the modular tree; the current
+standalone source is the release/build input.
 
 ## Validate
 

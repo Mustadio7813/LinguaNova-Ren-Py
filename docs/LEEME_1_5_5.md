@@ -39,6 +39,19 @@ Restaura los respaldos verificados de la última operación y retira archivos nu
 
 Una imagen con texto no se traduce mediante OCR en esta versión.
 
+## Aligerar una copia del juego
+
+En **Utilidades → Aligerar el juego** (modo avanzado), calcula el ahorro o
+crea una copia independiente con compresión de imágenes, audio y vídeo. El
+original no se modifica. Hay opciones para compresión sin pérdida, equilibrada
+o máxima, PCs antiguos, copias solo para Windows y equipos con poca RAM.
+Consulta [la guía detallada](ALIGERAR_JUEGO.md).
+
+La optimización de audio y vídeo necesita FFmpeg, un programa aparte. La
+versión portable puede descargarlo al usar la herramienta; la versión en
+carpeta puede incluirlo. Sin FFmpeg, audio y vídeo se copian sin cambios.
+Prueba la copia optimizada antes de sustituir o borrar el original.
+
 ## DeepL y compilación
 
 Selecciona DeepL en Traducir para ver el campo de clave y Guardar/Eliminar. Para compilar, ejecuta COMPILAR_1_5_5.bat; el ejecutable usa por defecto el perfil independiente Prueba_1.5.5_Compilado y no carga la clave guardada al ejecutar el .py. Ver ARREGLO_DEEPL_Y_COMPILACION_1_5_5.md.

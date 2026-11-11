@@ -1,0 +1,118 @@
+{
+  "schema_version": 2,
+  "record_status": "historical_reference",
+  "current_release": {
+    "revision": "2026-11-09_COBERTURA_REVISAR",
+    "date": "2026-11-09",
+    "edition": "Desarrollador",
+    "archive": "LinguaNova_Traductor_RenPy_1.5.5_Desarrollador_CORREGIDO.zip",
+    "window_title": "Traductor de Ren'Py",
+    "application_version": "1.5.5",
+    "hook_format": 5,
+    "source": "LinguaNova_Traductor_RenPy.py",
+    "source_sha256": "c2e37cdec1ddf69764a55c9bf46032db84f2f045bff85274e8b4ebc339a8490f",
+    "runtime_hook": "game/linguanova_mod_runtime_multilang.rpy",
+    "backups": ".linguanova_backups/mod_hooks/",
+    "technical_detection_text": "unchanged_pending_confirmation",
+    "partial_coverage_message": "translatable_and_exempt",
+    "tests": {
+      "offline_unittest_passed": 10,
+      "review_cooldown_seconds_simulated": 300,
+      "review_stop_and_save_seconds": 0.01,
+      "historical_cancellation_cases_passed": 11,
+      "historical_scripts_passed": [
+        "PAQUETE_COMPARTIR",
+        "PAQUETE_SDK",
+        "PAQUETES_SUMADOS",
+        "RUNTIME_MOD_V5"
+      ],
+      "qt_signal_environment": "test double",
+      "windows_native": "not_executed",
+      "qt_qml_runtime": "not_executed",
+      "renpy_sdk": "not_executed",
+      "live_provider_credentials": "not_executed",
+      "python_compile": "passed",
+      "variant_diff_check": "passed"
+    },
+    "historical_tests": {
+      "renpy_7_4_4_linux": "executed",
+      "renpy_scale_62476_linux": "shared_runtime_executed",
+      "renpy_save_load_linux": "shared_runtime_executed_with_fixture_screenshot",
+      "python_runtime_and_publication": "executed",
+      "qt_linux": "executed",
+      "windows_native": "not_executed",
+      "original_game": "not_executed",
+      "live_provider_credentials": "not_executed"
+    },
+    "pending_report": "translation_pending.json"
+  },
+  "current_explanation": "Pruebas sin red de cobertura, recuperación y cancelación, con validación de integridad de archivos.",
+  "historical_data": {
+    "python_syntax": "3.10 compatible grammar; executed on Python 3.12/Linux",
+    "tests_passed": 483,
+    "tests_skipped": 1,
+    "ui": {
+      "loaded": true,
+      "language_checks": 5,
+      "advanced_toggle": true,
+      "launch_disabled_without_preparation": true,
+      "single_click_stop": true,
+      "stopping_label": true,
+      "restart_button_enabled": true,
+      "return_from_mod_while_translating": true
+    },
+    "original_hashes_unchanged": true,
+    "own_imports": 0,
+    "comment_pairs": 18407,
+    "new_changed_definitions": 38,
+    "windows_build_executed": false,
+    "user_game_executed": false,
+    "cancellation_added_tests": 11,
+    "cancellation_latency_seconds": {
+      "request_cancel_seconds": 0.00020216600023559295,
+      "executor_cancel_seconds": 0.00039772200034349225,
+      "primary_stop_seconds": 0.0012061340003128862,
+      "backoff_cancel_seconds": 0.02522432200021285
+    },
+    "cancellation_scope_verified": true,
+    "deepl_ui": {
+      "layout_checks": 20,
+      "save_replace_delete_persisted": true,
+      "other_engine_heights_unchanged": true,
+      "python_errors": []
+    },
+    "compiled_profile_isolated": true,
+    "compiler_bat_standalone": true,
+    "navigation_added_tests": 2,
+    "navigation_modes_tested": [
+      "simple",
+      "advanced"
+    ],
+    "navigation_scope_verified": true
+  },
+  "previous_release": {
+    "revision": "2026-11-05_MODv5",
+    "date": "2026-11-05",
+    "edition": "Desarrollador",
+    "archive": "LinguaNova_Desarrollador.zip",
+    "window_title": "Traductor de Ren'Py",
+    "application_version": "1.5.5",
+    "hook_format": 5,
+    "source": "LinguaNova_Traductor_RenPy.py",
+    "source_sha256": "690237036274bfe66f0dd50e39cf5d74978164f13bf97533326fba98484a44ac",
+    "runtime_hook": "game/linguanova_mod_runtime_multilang.rpy",
+    "backups": ".linguanova_backups/mod_hooks/",
+    "technical_detection_text": "unchanged_pending_confirmation",
+    "partial_coverage_message": "retained",
+    "tests": {
+      "renpy_7_4_4_linux": "executed",
+      "renpy_scale_62476_linux": "shared_runtime_executed",
+      "renpy_save_load_linux": "shared_runtime_executed_with_fixture_screenshot",
+      "python_runtime_and_publication": "executed",
+      "qt_linux": "executed",
+      "windows_native": "not_executed",
+      "original_game": "not_executed",
+      "live_provider_credentials": "not_executed"
+    }
+  }
+}

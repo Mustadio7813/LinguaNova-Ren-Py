@@ -1,0 +1,42 @@
+{
+  "schema_version": 2,
+  "record_status": "historical_reference",
+  "current_release": {
+    "revision": "2026-11-05_MODv5",
+    "date": "2026-11-05",
+    "edition": "Desarrollador",
+    "archive": "LinguaNova_Desarrollador.zip",
+    "window_title": "Traductor de Ren'Py",
+    "application_version": "1.5.5",
+    "hook_format": 5,
+    "source": "LinguaNova_Traductor_RenPy.py",
+    "source_sha256": "690237036274bfe66f0dd50e39cf5d74978164f13bf97533326fba98484a44ac",
+    "runtime_hook": "game/linguanova_mod_runtime_multilang.rpy",
+    "backups": ".linguanova_backups/mod_hooks/",
+    "technical_detection_text": "unchanged_pending_confirmation",
+    "partial_coverage_message": "retained",
+    "tests": {
+      "renpy_7_4_4_linux": "executed",
+      "renpy_scale_62476_linux": "shared_runtime_executed",
+      "renpy_save_load_linux": "shared_runtime_executed_with_fixture_screenshot",
+      "python_runtime_and_publication": "executed",
+      "qt_linux": "executed",
+      "windows_native": "not_executed",
+      "original_game": "not_executed",
+      "live_provider_credentials": "not_executed"
+    }
+  },
+  "current_explanation": "Se conservaron las correcciones previas de DeepL y el aislamiento de claves de compilación. Sus referencias de configuración y proxies se verificaron con el resto de motores. Los resultados antiguos de esta área son históricos; no representan una nueva llamada con credenciales ni una nueva compilación de Windows. Consultar los registros actuales para las pruebas ejecutadas.",
+  "historical_data": {
+    "all_existing_python_definitions_unchanged": true,
+    "all_locale_values_unchanged": true,
+    "other_ui_resources_unchanged": true,
+    "changes": [
+      "DeepL-specific automatic engine card height",
+      "ID for content implicit height",
+      "separate default frozen profile",
+      "standalone compiler BAT without user configuration data"
+    ],
+    "own_imports": 0
+  }
+}

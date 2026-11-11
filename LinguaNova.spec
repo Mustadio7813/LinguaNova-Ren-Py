@@ -5,6 +5,7 @@
 import os
 import re
 import sys
+import importlib.util
 from pathlib import Path
 from PyInstaller.utils.hooks import collect_submodules, collect_data_files
 
@@ -94,6 +95,19 @@ for dependency in (
 ):
     hidden_imports += collect_submodules(dependency)
 
+# The optimizer can run with a reduced feature set when optional wheels are
+# unavailable. Bundle only the optional modules present in the build environment.
+for package, module in (
+    ('PIL', 'PIL.Image'),
+    ('oxipng', 'oxipng'),
+    ('imagequant', 'imagequant'),
+    ('mozjpeg_lossless_optimization', 'mozjpeg_lossless_optimization'),
+):
+    try:
+        if importlib.util.find_spec(package) is not None:
+            hidden_imports.append(module)
+    except (ImportError, ValueError):
+        pass
 
 # Manual additions for specific edge cases
 hidden_imports.append('src.version')  # Ensure version module is bundled

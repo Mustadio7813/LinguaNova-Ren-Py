@@ -1,0 +1,36 @@
+{
+  "schema_version": 2,
+  "record_status": "historical_reference",
+  "current_release": {
+    "revision": "2026-11-05_MODv5",
+    "date": "2026-11-05",
+    "edition": "Desarrollador",
+    "archive": "LinguaNova_Desarrollador.zip",
+    "window_title": "Traductor de Ren'Py",
+    "application_version": "1.5.5",
+    "hook_format": 5,
+    "source": "LinguaNova_Traductor_RenPy.py",
+    "source_sha256": "690237036274bfe66f0dd50e39cf5d74978164f13bf97533326fba98484a44ac",
+    "runtime_hook": "game/linguanova_mod_runtime_multilang.rpy",
+    "backups": ".linguanova_backups/mod_hooks/",
+    "technical_detection_text": "unchanged_pending_confirmation",
+    "partial_coverage_message": "retained",
+    "tests": {
+      "renpy_7_4_4_linux": "executed",
+      "renpy_scale_62476_linux": "shared_runtime_executed",
+      "renpy_save_load_linux": "shared_runtime_executed_with_fixture_screenshot",
+      "python_runtime_and_publication": "executed",
+      "qt_linux": "executed",
+      "windows_native": "not_executed",
+      "original_game": "not_executed",
+      "live_provider_credentials": "not_executed"
+    }
+  },
+  "current_explanation": "Se conserva la navegación entre Traducción y MOD y el comportamiento previo del modo avanzado. La revisión actual modifica el título visible y el runtime generado; no sustituye esa lógica. Los resultados antiguos de navegación se conservan como antecedentes y se distinguen de la carga completa actual de la interfaz en Linux.",
+  "historical_data": {
+    "all_python_definitions_and_classes_unchanged": true,
+    "all_other_ui_resources_unchanged": true,
+    "all_locale_values_unchanged": true,
+    "changed_rule": "Allow Translate page 0 and MOD page 6 during translation; preserve all other locks"
+  }
+}

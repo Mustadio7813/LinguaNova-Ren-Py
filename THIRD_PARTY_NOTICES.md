@@ -66,3 +66,13 @@ Do not strip third-party copyright or license notices from bundled components.
 ## Release record
 
 The exact release inventory should be recorded alongside the release tag/build record rather than inferred later from a moving development environment.
+
+## Aligerar el juego (2026-11-11)
+
+| Componente | Licencia | Uso |
+| --- | --- | --- |
+| Pillow | MIT-CMU (HPND) | Lectura y escritura de imágenes. Dependencia opcional. |
+| pyoxipng (oxipng) | MIT | PNG sin pérdida. Dependencia opcional. |
+| imagequant (libimagequant) | GPL v3 o posterior | PNG con paleta. Dependencia opcional; compatible con la GPL v3 de LinguaNova. |
+| mozjpeg-lossless-optimization (mozjpeg) | BSD de 3 cláusulas / IJG | JPEG sin pérdida. Dependencia opcional. |
+| FFmpeg (compilación «essentials» de www.gyan.dev) | GPL v3 | Programa aparte, ejecutado y nunca importado. La versión en carpeta lo incluye en `ffmpeg/` con `LICENSE_ffmpeg.txt`; la portable lo descarga al usarlo. Código fuente: https://ffmpeg.org/download.html y https://www.gyan.dev/ffmpeg/builds/. |

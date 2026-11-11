@@ -1,0 +1,45 @@
+{
+  "revision": "2026-11-05_MODv5",
+  "platform": "Linux",
+  "runtime": "Ren'Py 7.4.4.1439",
+  "source_sha256": "690237036274bfe66f0dd50e39cf5d74978164f13bf97533326fba98484a44ac",
+  "scenarios": [
+    {
+      "scenario": "estandar",
+      "status": "OK",
+      "runtime": "Ren'Py 7.4.4.1439"
+    },
+    {
+      "scenario": "japones",
+      "status": "OK",
+      "runtime": "Ren'Py 7.4.4.1439"
+    },
+    {
+      "scenario": "before",
+      "status": "EXPECTED_V4_RECURSION",
+      "runtime": "Ren'Py 7.4.4.1439"
+    },
+    {
+      "scenario": "mixed",
+      "status": "OK",
+      "runtime": "Ren'Py 7.4.4.1439"
+    },
+    {
+      "scenario": "scale",
+      "status": "OK",
+      "runtime": "Ren'Py 7.4.4.1439",
+      "copies": 2,
+      "entries": 62476
+    },
+    {
+      "scenario": "save_load",
+      "status": "OK_SAVE_LOAD",
+      "runtime": "Ren'Py 7.4.4.1439",
+      "copies": 2,
+      "screenshot": "fixture"
+    }
+  ],
+  "original_game_executed": false,
+  "windows_executed": false,
+  "scope_note": "Casos estandar y japones ejecutados con sus respectivos generadores; scale y save_load usan el runtime compartido, verificado idéntico, desde el generador estándar."
+}
